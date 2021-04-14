@@ -1,0 +1,18 @@
+.container{
+
+    margin-top: 15%; 
+    margin-bottom: 30px
+}
+
+input[type=checkbox] {
+    transform: scale(1.7);
+    margin-right: 20px;
+}
+td, tr{
+   text-align: center;
+    vertical-align: middle;
+}
+
+.totalPrice{
+   margin-left: 80%;
+}

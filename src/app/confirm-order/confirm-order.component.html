@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Confirm Order</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  </head>
+  <body >
+      <main class="container">
+          <form #orderForm = 'ngForm' (ngSubmit)="confirm()">
+              <table  class="table table-sm">
+                <thead>
+                  <tr>
+                    <th >Hình</th>
+                    <th >Tên sản phẩm</th>
+                    <th >Giá</th>
+                    <th >Số lượng</th>
+                    <th >Tổng</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of cart">
+                    <td><span>{{item.food.name}}</span></td>
+                    <td><span>{{item.food.price}}</span></td>
+                    <td><span>{{item.quantity}}</span></td>
+                    <td><span>{{item.price2}}</span></td>
+                  </tr>
+                </tbody>
+              </table>
+              <div class="totalPrice">
+                <span>Tổng cộng: {{totalPrice}}</span>
+                <div><button class="btn btn-primary">Xác nhận mua hàng</button></div>
+              </div>
+          </form>
+      </main>
+    
+      <footer class="tm-footer text-center" style="background-color:cadetblue">
+      </footer>
+    
+	<script src="./assets/js/jquery.min.js"></script>
+	<script src="./assets/js/parallax.min.js"></script>
+  </body>
+  </html>

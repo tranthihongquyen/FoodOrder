@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <title>Foodie Login</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+      </head>
+    <body>
+      
+        <div class="container">
+          
+            <form class="form" [formGroup]="loginForm" (ngSubmit)="login()">
+              <p *ngIf="message" class="text-center error">{{message}}</p>    
+
+                <div class="form-group" [ngClass]="{ 'has-error': f._id.errors }">
+                  <label for="email">Your account:</label>
+                  <input formControlName="_id" class="form-control" placeholder="Identity Number" id="email">
+                  <div *ngIf="f._id.errors" class="help-block">    
+                      <div *ngIf="f._id.errors.required">Userid is required</div>    
+                  </div>    
+                </div>
+            
+                <div class="form-group" [ngClass]="{ 'has-error': f.password.errors }">
+                  <label for="pwd">Password:</label>
+                  <input type="password" class="form-control" placeholder="Password" id="pwd" formControlName="password">
+                  <div *ngIf=" f.password.errors" class="help-block">    
+                    <div *ngIf="f.password.errors.required">Password is required</div>    
+                  </div>   
+                </div>
+
+                <div class="form-group form-check">
+                  <label class="form-check-label">
+                    <input class="form-check-input" type="checkbox"> Remember me
+                  </label>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Login</button>
+              </form>
+        </div>
+    </body>
+</html>

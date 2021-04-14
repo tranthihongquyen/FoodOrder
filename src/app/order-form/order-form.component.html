@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Food House</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  </head>
+  <body >
+      <main class="container">
+        <div *ngIf="cart.length === 0" class="alert alert-infor">Your cart is empty</div>
+        <div *ngIf="cart.length > 0">
+          <form #orderForm = 'ngForm' (ngSubmit)="addOrder()">
+            
+              <table  class="table table-sm">
+                <thead>
+                  <tr>
+                    <th >Hình</th>
+                    <th >Tên sản phẩm</th>
+                    <th >Giá</th>
+                    <th >Số lượng</th>
+                    <th >Tổng</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let item of cart">
+                    <td style="width: 30%;">
+                      <input type="checkbox" checked (click)="delete(item.food._id)">
+                      <img src="./assets/img/gallery/01.jpg" alt="Image" style=" height: 100px;"/>
+                    </td>
+                    <td><span>{{item.food.name}}</span></td>
+                    <td><span>{{item.food.price}}</span></td>
+                    <td>
+                      <span>{{item.quantity}}</span>
+                      <select (change)="selectChangeHandler($event, item.food._id)" name="quantity" [(ngModel)] = "item.quantity">
+                        <option *ngFor="let q of quantity" [value]="q" selected=false>{{q}}</option>
+                      </select>
+                    </td>
+                    <td><span>{{item.price2}}</span></td>
+                  </tr>
+                </tbody>
+              </table>
+              <div class="totalPrice">
+                <span >Tổng cộng: {{totalPrice}}</span>
+                <div><button class="btn btn-primary">Đặt món</button></div>
+              </div>
+
+          </form>
+
+         
+        </div>  
+      </main>
+    
+      <footer class="tm-footer text-center" style="background-color:cadetblue">
+      </footer>
+    
+	<script src="./assets/js/jquery.min.js"></script>
+	<script src="./assets/js/parallax.min.js"></script>
+  </body>
+  </html>

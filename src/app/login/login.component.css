@@ -1,0 +1,11 @@
+.container{
+    margin-top: 15%; 
+    margin-bottom: 30px
+}
+form{
+    width: 40%;
+    margin-left: 20%;
+    border: 1px solid rgb(196, 173, 173);
+    padding: 20px;
+    border-radius: 5px;
+}
