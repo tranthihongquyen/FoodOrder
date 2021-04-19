@@ -182,6 +182,8 @@ ul, nav, body, h1, h2, h4, h6, p, figure {
     font-family: 'Open Sans', Arial, sans-serif;
     font-size: 17px;
     overflow-x: hidden;
+    height:1500px;
+    z-index: 1;
   }
   
   .container {
@@ -836,4 +838,31 @@ ul, nav, body, h1, h2, h4, h6, p, figure {
   
   .panel p {
     padding: 5px 20px 30px;
+  }
+  
+
+
+  .dropbtn-item{
+    background-color: rgb(165, 124, 124);
+    margin-top:2px;
+    color: white;
+    padding: 5px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+    width:210px;
+    height: 40px;
+    border-radius: 5px;
+  }
+
+  .dropdown-content button {
+    text-decoration: none;
+    display: block;
+  }
+  
+  .dropbtn-item div:click {background-color: #f1f1f1}
+
+  
+  .dropbtn-item:hover {
+    background-color: #5370c0;
   }

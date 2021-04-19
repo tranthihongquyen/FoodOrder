@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Food House</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  </head>
+  <body >
+      <main class="container">
+        <div *ngFor="let item of orderBills">
+            <span>Ngày đặt hàng: {{item.ordertime}}</span>
+            <span style="margin-left: 30px">Tổng tiền: {{item.totalprice}}</span>
+            <span *ngFor="let food of item.listfood">
+                <div>
+                    <span>Sản phẩm: {{food.foodid}}</span>
+                    <span style="margin-left: 20px">Số lượng: {{food.amount}}</span>
+                </div>
+            </span>
+            <br>
+            <br>
+            
+        </div>
+      </main>
+     
+	<script src="./assets/js/jquery.min.js"></script>
+	<script src="./assets/js/parallax.min.js"></script>
+  </body>
+  </html>

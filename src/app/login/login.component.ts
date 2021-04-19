@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NavigationEnd, Router } from '@angular/router';
 import { filter, map } from 'rxjs/operators';
 import { AuthService } from '../auth.service';
+import { CartItem } from '../cart-item';
 import { Customer } from '../customer';
 import { FoodService } from '../food.service';
 
@@ -36,6 +37,7 @@ export class LoginComponent implements OnInit {
   returnURL!: String;
   customerList!: Customer[];
   account:AccountData = new AccountData();
+  cart!:CartItem[];
 
   ngOnInit(): void {
     this.loginForm = this.formBuilder.group({
@@ -44,6 +46,7 @@ export class LoginComponent implements OnInit {
     });
     this.returnURL = 'food/order';
   }
+
   get f(){return this.loginForm.controls;}
 
   public login(){
@@ -63,10 +66,17 @@ export class LoginComponent implements OnInit {
         }
       });
     }
-    this.router.navigate(['food/confirm-order']);
+    this.cart = this.foodService.getCart(); //Kiểm tra xem là sau khi nhấn login đăng nhập thành công thì nên redirect tới trang nào, đáng ra chỗ này phải lấy được url của previous page nhưng mà chưa làm đc
+    if(this.cart.length == 0){
+      this.router.navigate(['food/home']);
+    }
+    else{
+      this.router.navigate(['food/order']);
+    }
+    
   }
-}
 
+}
 class AccountData{
   message!: String;
   status!: Number;

@@ -17,7 +17,6 @@ export class FoodHeaderComponent implements OnInit {
   public login!:String;
   ngOnInit(): void {
     if(sessionStorage.getItem('username') == null){
-      console.log('Chưa có đăng nhập nha');
       this.login = 'Log In'
     }
     else{
@@ -28,11 +27,9 @@ export class FoodHeaderComponent implements OnInit {
   }
   AfterViewInIt(){
     if(sessionStorage.getItem('username') == null){
-      console.log('Chưa có đăng nhập nha');
       this.login = 'Log In'
     }
     else{
-      console.log(sessionStorage.getItem('username'));
       this.account._id = (sessionStorage.getItem('username')!);
       this.login = 'Log Out';
     }

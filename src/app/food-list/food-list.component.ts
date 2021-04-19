@@ -18,11 +18,22 @@ export class FoodListComponent implements OnInit {
   foodType!: FoodType[];
   
   constructor(private foodService: FoodService, public router:Router) { }
-
+  items!: Array<any>;
+  pageOfItems!: Array<any>;
+  
   ngOnInit(): void {
    this.getFood();
    this.getFoodType();
+   this.items = Array(70).fill(0).map((x, i) => ({ id: 8, name: `Item ${i + 1}`}));
   }
+
+  
+  onChangePage(pageOfItems: Array<any>) {
+    // update current page of items
+    this.pageOfItems = pageOfItems;
+  }
+
+
   private getFood(){
     this.foodService.getFoodList().subscribe((data: Food[])=>{
       this.foodList = data;
@@ -35,10 +46,12 @@ export class FoodListComponent implements OnInit {
     })
   }
 
+  getFoodListFromFoodType(type: String){
+    this.foodService.getFoodListFromFoodType(type).subscribe(data => this.foodList = data);
+  }
+
   public directToOrder(food: Food){
     this.foodService.setFoodItemToAddToCart(food);
     this.router.navigate(['food/order']);
   }
-
-
 }

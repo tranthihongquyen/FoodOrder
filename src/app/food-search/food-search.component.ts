@@ -23,6 +23,7 @@ export class FoodSearchComponent implements OnInit {
     let temp:String ;
     temp = this.name;
     temp.trim();
+    
   }
   ngDoCheck(){
   }
